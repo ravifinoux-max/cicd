@@ -6,7 +6,9 @@ app = FastAPI()
 
 @app.post("/")
 def health():
-    
+    return {"status": "success"}
+
+
 
 no =  [1,2,3,4,4,8]
 
