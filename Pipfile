@@ -5,8 +5,9 @@ name = "pypi"
 
 [packages]
 python-dotenv = "*"
-pytest = "*"
 redis = {extras = ["hiredis"], version = "*"}
+fastapi = {extras = ["standard"], version = "*"}
+pytest = "*"
 
 [dev-packages]
 
