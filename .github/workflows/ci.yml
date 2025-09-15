@@ -9,4 +9,4 @@ jobs:
       # - name: first human
       - run: echo "starting a ci workflow in action"
       - run: echo "this workflow is now running ${{runner.os}}"
-      - run: echo "${{github}}"
+      - run: echo "${{toJson(github)}}"
