@@ -1,0 +1,9 @@
+name: CI integration
+on :
+  - push
+
+jobs:
+  runs-on: ubuntu-latest
+  steps: 
+    - run echo "starting a ci workflow in action"
+    - run echo "this workflow is now running ${{runner.os}}"
