@@ -4,7 +4,7 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
-@app.post("/")
+@app.post("/health", status_code=200)
 def health():
     return {"status": "success"}
 

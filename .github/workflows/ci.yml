@@ -10,3 +10,11 @@ jobs:
       - run: echo "starting a ci workflow in action"
       - run: echo "this workflow is now running ${{runner.os}}"
       - run: echo "${{toJson(github)}}"
+
+      # configure
+      # -  
+      - run: pipenv install
+
+      # testing
+      - run: pytest
+
