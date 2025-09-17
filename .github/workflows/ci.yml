@@ -16,8 +16,8 @@ jobs:
       # - run: echo "${{toJson(github)}}"
       
       # configure
-      - run: pipenv run
       - run: pip install pipenv
+      - run: pipenv run
       
       # linitng
       
