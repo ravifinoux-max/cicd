@@ -16,7 +16,11 @@ jobs:
       # - run: echo "${{toJson(github)}}"
       - run: pip install pipenv
       # configure
-      - run: pipenv install
+      - run: pipenv shell
+      # linitng
+      
+      # checking auditing
+      
       # testing
       - run: pytest
 
