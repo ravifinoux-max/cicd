@@ -14,13 +14,15 @@ jobs:
       - run: echo "py version" 
       - run: python --version
       # - run: echo "${{toJson(github)}}"
-      - run: pip install pipenv
+      
       # configure
-      - run: pipenv shell
+      - run: pipenv run
+      - run: pip install pipenv
+      
       # linitng
       
       # checking auditing
-      
+
       # testing
       - run: pytest
 
