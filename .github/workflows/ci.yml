@@ -20,11 +20,9 @@ jobs:
 
       - run: pipenv install
       
-      - run: pipenv shell
       # linitng
       
       # checking auditing
-
+      
       # testing
-      - run: pytest
-
+      - run: pipenv run pytest
