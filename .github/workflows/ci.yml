@@ -14,10 +14,9 @@ jobs:
       - run: echo "py version" 
       - run: python --version
       # - run: echo "${{toJson(github)}}"
-
+      - run: pip install pipenv
       # configure
       - run: pipenv install
-
       # testing
       - run: pytest
 
