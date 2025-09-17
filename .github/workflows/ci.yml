@@ -17,7 +17,8 @@ jobs:
       
       # configure
       - run: pip install pipenv
-      - run: pipenv run
+
+      - run: pipenv install
       
       # linitng
       
