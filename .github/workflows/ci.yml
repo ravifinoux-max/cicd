@@ -1,6 +1,8 @@
 name: CI integration
 on :
-  - push
+  push:
+    branches: 
+    - main
 
 jobs:
   firstPhase: # job id
@@ -9,10 +11,11 @@ jobs:
       # - name: first human
       - run: echo "starting a ci workflow in action"
       - run: echo "this workflow is now running ${{runner.os}}"
-      - run: echo "${{toJson(github)}}"
+      - run: echo "py version" 
+      - run: python --version
+      # - run: echo "${{toJson(github)}}"
 
       # configure
-      # -  
       - run: pipenv install
 
       # testing
