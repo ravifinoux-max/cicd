@@ -23,7 +23,7 @@ jobs:
         run: |
           export PIPENV_VENV_IN_PROJECT=1
           python -m pip install --upgrade pip
-          pip install pipenv
+          pip install --upgrade pipenv
           pipenv install --deploy --ignore-pipfile
 
       - name: List current directory
