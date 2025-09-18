@@ -1,28 +1,54 @@
 name: CI integration
-on :
-  push:
-    branches: 
+
+
+
+on : # event register
+
+  push: # event
+    branches: # which branches
     - main
 
+
+
 jobs:
-  firstPhase: # job id
+
+  build: # job id
     runs-on: "ubuntu-latest"
     steps: 
       # - name: first human
       - run: echo "starting a ci workflow in action"
       - run: echo "this workflow is now running ${{runner.os}}"
-      - run: echo "py version" 
+      - run: echo "py version"
       - run: python --version
-      # - run: echo "${{toJson(github)}}"
-      
-      # configure
-      - run: pip install pipenv
 
-      - run: pipenv install
       
-      # linitng
+      - name: checking github env
+        run: echo "${{toJson(github)}}"
+
+      - name: "checkout the repo in vm"
+        uses: action/checkout@v5
+
+      - name: listing current dir
+        run: ls
+
+      # configure using requirement file
+      - name: generating a requirement file
+        run: "python -m "
       
-      # checking auditing
+
+    # linitng
+    
+    # checking security auditing
+    
+    # static analysis
+
+    # license auditing
+
+    # testing
+      - name: "demo"
+        run : "echo 'unreachable'"
+
       
-      # testing
       - run: pipenv run pytest
+
+
