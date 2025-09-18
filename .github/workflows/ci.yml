@@ -21,12 +21,13 @@ jobs:
 
       - name: Install pipenv and dependencies
         run: |
+          export PIPENV_VENV_IN_PROJECT=1
           python -m pip install --upgrade pip
           pip install pipenv
           pipenv install --deploy --ignore-pipfile
 
       - name: List current directory
-        run: ls
+        run: ls && echo PIPENV_VENV_IN_PROJECT
 
       - name: Upload venv as artifact
         uses: actions/upload-artifact@v4
