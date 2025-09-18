@@ -27,7 +27,7 @@ jobs:
           pipenv install --deploy --ignore-pipfile
 
       - name: List current directory
-        run: ls && echo PIPENV_VENV_IN_PROJECT
+        run: ls && echo $PIPENV_VENV_IN_PROJECT
 
       - name: Upload venv as artifact
         uses: actions/upload-artifact@v4
