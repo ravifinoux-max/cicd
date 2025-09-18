@@ -85,7 +85,7 @@ jobs:
         uses: actions/download-artifact@v4
         with: 
             name: py-venv
-            path: .venv/
+            path: ./venv
 
 
       - name: activating venv
