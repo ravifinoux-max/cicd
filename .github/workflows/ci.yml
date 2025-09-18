@@ -31,9 +31,13 @@ jobs:
       - name: listing current dir
         run: ls
 
-      # configure using requirement file
-      - name: generating a requirement file
-        run: "python -m "
+      # using pipenv
+      - name: pipenv configure
+        run: pip install pipenv && pipenv install
+
+      # configure  requirement file if pipenv fails
+      # - name: generating a requirement file
+      #   run: "python -m "
       
 
     # linitng
