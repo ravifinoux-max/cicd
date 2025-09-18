@@ -1,99 +1,59 @@
 name: CI integration
 
-
-
-on : # event register
-
-  push: # event
-    branches: # which branches
-    - main
-
-
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-
-
-  build: # job id
-    runs-on: "ubuntu-latest"
-    env: 
+  build:
+    runs-on: ubuntu-latest
+    env:
       PIPENV_VENV_IN_PROJECT: 1
-    steps: # steps for current job
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
 
-      - run: echo "starting a ci workflow in action"
-
-      - run: echo "this workflow is now running ${{runner.os}}"
-
-      - run: echo "py version" && python --version
-  
-      - name: checking github env
-        run: echo "${{toJson(github)}}"
-
-      - name: "checkout the repo in vm"
-        uses: actions/checkout@v4 # checkout github plugin used for fetchng current repo to vm
-
-      - name : "loading python in vm"
+      - name: Set up Python
         uses: actions/setup-python@v5
-        with: 
+        with:
           python-version: 3.12
 
+      - name: Install pipenv and dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pipenv
+          pipenv install --deploy --ignore-pipfile
 
-      # using pipenv
-      - name: pipenv configure and install dependency
-        id: pipenv-status
-        run: pip install pipenv && pipenv install
-
-      # configure  requirement file if pipenv fails
-      # - name: generating a requirement file
-      # if: pipenv-status. 
-      #  run: "python -m "
-
-      # uploading as artifact for reusing in other jobs and in 'dev', 'qa', 'uat', 'prod' env
-
-      
-      - name: listing current dir for confirmation
+      - name: List current directory
         run: ls
-        
-      - name: uploading venv in artifact so letar we can use it
+
+      - name: Upload venv as artifact
         uses: actions/upload-artifact@v4
-        with: 
+        with:
           name: py-venv
           path: .venv/
           retention-days: 1
 
-
-    # linitng
-    
-    # checking security auditing
-    
-    # static analysis
-
-    # license auditing
-
-  # testing
-  Testing:
-    needs: [build] # run after build runs successful
+  testing:
+    needs: [build]
     runs-on: ubuntu-latest
-    env: # setting env
-     PIPENV_VENV_IN_PROJECT: 1
-
-    steps: 
-
-      - name: checkout-python version
+    env:
+      PIPENV_VENV_IN_PROJECT: 1
+    steps:
+      - name: Checkout repo
         uses: actions/checkout@v4
-        with: 
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
           python-version: 3.12
 
-      - name: downloading artidact for testing
+      - name: Download venv artifact
         uses: actions/download-artifact@v4
-        with: 
-            name: py-venv
-            path: ./venv
+        with:
+          name: py-venv
+          path: .venv
 
-
-      - name: activating venv
-        run: source .venv/bin/activate
-
-      - name: running test # doubt about unit test and integration test
-        run: pytest -v
-
-
+      - name: Run tests
+        run: pipenv run pytest -v
