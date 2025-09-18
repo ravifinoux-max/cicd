@@ -14,7 +14,7 @@ jobs:
 
 
   build: # job id
-    runs-on: "ubuntu-20.04"
+    runs-on: "ubuntu-latest"
     env: 
       PIPENV_VENV_IN_PROJECT: 1
     steps: # steps for current job
@@ -70,7 +70,7 @@ jobs:
   # testing
   Testing:
     needs: [build] # run after build runs successful
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     env: # setting env
      PIPENV_VENV_IN_PROJECT: 1
 
