@@ -30,9 +30,6 @@ jobs:
 
       - name: "checkout the repo in vm"
         uses: actions/checkout@v4 # checkout github plugin used for fetchng current repo to vm
-      
-      - name: listing current dir for confirmation
-        run: ls
 
       - name : "loading python in vm"
         uses: actions/setup-python@v5
@@ -51,6 +48,11 @@ jobs:
       #  run: "python -m "
 
       # uploading as artifact for reusing in other jobs and in 'dev', 'qa', 'uat', 'prod' env
+
+      
+      - name: listing current dir for confirmation
+        run: ls
+        
       - name: uploading venv in artifact so letar we can use it
         uses: actions/upload-artifact@v4
         with: 
