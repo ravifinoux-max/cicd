@@ -21,12 +21,12 @@ jobs:
       - run: echo "py version"
       - run: python --version
 
-      
+  
       - name: checking github env
         run: echo "${{toJson(github)}}"
 
       - name: "checkout the repo in vm"
-        uses: action/checkout@v5
+        uses: action/checkout@v4
 
       - name: listing current dir
         run: ls
