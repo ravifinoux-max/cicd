@@ -24,7 +24,7 @@ jobs:
           export PIPENV_VENV_IN_PROJECT=1
           python -m pip install --upgrade pip
           pip install --upgrade pipenv
-          pipenv install --deploy --ignore-pipfile
+          pipenv shell && pipenv install --deploy --ignore-pipfile
 
       - name: List current directory
         run: ls && echo $PIPENV_VENV_IN_PROJECT
@@ -35,6 +35,7 @@ jobs:
           name: py-venv
           path: ./venv
           retention-days: 1
+          if-no-files-found: warn
 
   testing:
     needs: [build]
