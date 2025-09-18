@@ -12,34 +12,52 @@ on : # event register
 
 jobs:
 
+
   build: # job id
-    runs-on: "ubuntu-latest"
-
+    runs-on: "ubuntu-20.04"
+    env: 
+      PIPENV_VENV_IN_PROJECT: 1
     steps: # steps for current job
-      # - name: first human
-      - run: echo "starting a ci workflow in action"
-      - run: echo "this workflow is now running ${{runner.os}}"
-      - run: echo "py version"
-      - run: python --version
 
+      - run: echo "starting a ci workflow in action"
+
+      - run: echo "this workflow is now running ${{runner.os}}"
+
+      - run: echo "py version" && python --version
   
       - name: checking github env
         run: echo "${{toJson(github)}}"
 
       - name: "checkout the repo in vm"
-        uses: actions/checkout@v4
-
-      - name: listing current dir
+        uses: actions/checkout@v4 # checkout github plugin used for fetchng current repo to vm
+      
+      - name: listing current dir for confirmation
         run: ls
 
+      - name : "loading python in vm"
+        uses: actions/setup-python@v5
+        with: 
+          python-version: 3.12
+
+
       # using pipenv
-      - name: pipenv configure
+      - name: pipenv configure and install dependency
+        id: pipenv-status
         run: pip install pipenv && pipenv install
 
       # configure  requirement file if pipenv fails
       # - name: generating a requirement file
-      #   run: "python -m "
-      
+      # if: pipenv-status. 
+      #  run: "python -m "
+
+      # uploading as artifact for reusing in other jobs and in 'dev', 'qa', 'uat', 'prod' env
+      - name: uploading venv in artifact so letar we can use it
+        uses: actions/upload-artifact@v4
+        with: 
+          name: py-venv
+          path: .venv
+          retention-days: 1
+
 
     # linitng
     
@@ -49,11 +67,29 @@ jobs:
 
     # license auditing
 
-    # testing
-      - name: "demo"
-        run : "echo 'unreachable'"
+  # testing
+  Testing:
+    needs: [build] # run after build runs successful
+    runs-on: ubuntu-20.04
+    env: # setting env
+     PIPENV_VENV_IN_PROJECT: 1
 
-      
-      - run: pipenv run pytest
+    steps: 
+
+      - name: checkout-python version
+        uses: actions/checkout@v4
+        with: 
+          python-version: 3.12
+
+      - name: downloading artidact for testing
+        uses: actions/download-artifact@v4
+        with: 
+            name: py-venv
+
+      - name: activating venv
+        run: source .venv/bin/activate
+
+      - name: running test # doubt about unit test and integration test
+        run: pytest -v
 
 
