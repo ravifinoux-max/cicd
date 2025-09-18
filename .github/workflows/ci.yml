@@ -14,7 +14,8 @@ jobs:
 
   build: # job id
     runs-on: "ubuntu-latest"
-    steps: 
+
+    steps: # steps for current job
       # - name: first human
       - run: echo "starting a ci workflow in action"
       - run: echo "this workflow is now running ${{runner.os}}"
