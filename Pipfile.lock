@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "0057bfbceee80c59b7c853f6528cd1e29424b45cc696ac5bf0ea1f05917aad46"
+            "sha256": "48259f823d97d28b8f684fe13506580cb74b615e77aaf300965c53b7c684dbc2"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -42,11 +42,11 @@
         },
         "click": {
             "hashes": [
-                "sha256:27c491cc05d968d271d5a1db13e3b5a184636d9d930f148c50b038f0d0646202",
-                "sha256:61a3265b914e850b85317d0b3109c7f8cd35a670f963866005d6ef1d5175a12b"
+                "sha256:9b9f285302c6e3064f4330c05f05b81945b2a39544279343e6e7c5f27a9baddc",
+                "sha256:e7b8232224eba16f4ebe410c25ced9f7875cb5f3263ffc93cc3e8da705e229c4"
             ],
             "markers": "python_version >= '3.10'",
-            "version": "==8.2.1"
+            "version": "==8.3.0"
         },
         "colorama": {
             "hashes": [
@@ -96,11 +96,11 @@
         },
         "fastapi-cloud-cli": {
             "hashes": [
-                "sha256:341ee585eb731a6d3c3656cb91ad38e5f39809bf1a16d41de1333e38635a7937",
-                "sha256:d80525fb9c0e8af122370891f9fa83cf5d496e4ad47a8dd26c0496a6c85a012a"
+                "sha256:115d9b1f198b09ecc66f67156d183babb4fc14431414cc2e57a7649624782da6",
+                "sha256:8dc13f95246d80e625e2789a21760494e855d887f70caae109423d00064772d1"
             ],
             "markers": "python_version >= '3.8'",
-            "version": "==0.1.5"
+            "version": "==0.2.0"
         },
         "h11": {
             "hashes": [
@@ -287,6 +287,7 @@
                 "sha256:75e98c5f16b0f35b567856f597f06ff2270a374470a5c2392242528e3e3e42fc",
                 "sha256:d909fcccc110f8c7faf814ca82a9a4d816bc5a6dbfea25d6591d6985b8ba59ad"
             ],
+            "index": "pypi",
             "markers": "python_version >= '3.8'",
             "version": "==0.28.1"
         },
@@ -418,11 +419,11 @@
                 "email"
             ],
             "hashes": [
-                "sha256:d989c3c6cb79469287b1569f7447a17848c998458d49ebe294e975b9baf0f0db",
-                "sha256:dde5df002701f6de26248661f6835bbe296a47bf73990135c7d07ce741b9623b"
+                "sha256:6b8ffda597a14812a7975c90b82a8a2e777d9257aba3453f973acd3c032a18e2",
+                "sha256:c42dd626f5cfc1c6950ce6205ea58c93efa406da65f479dcb4029d5934857da2"
             ],
             "markers": "python_version >= '3.9'",
-            "version": "==2.11.7"
+            "version": "==2.11.9"
         },
         "pydantic-core": {
             "hashes": [
@@ -780,11 +781,11 @@
         },
         "sentry-sdk": {
             "hashes": [
-                "sha256:531751da91aa62a909b42a7be155b41f6bb0de9df6ae98441d23b95de2f98475",
-                "sha256:baaaea6608ed3a639766a69ded06b254b106d32ad9d180bdbe58f3db9364592b"
+                "sha256:2324aea8573a3fa1576df7fb4d65c4eb8d9929c8fa5939647397a07179eef8d0",
+                "sha256:792d2af45e167e2f8a3347143f525b9b6bac6f058fb2014720b40b84ccbeb985"
             ],
             "markers": "python_version >= '3.6'",
-            "version": "==2.37.1"
+            "version": "==2.38.0"
         },
         "shellingham": {
             "hashes": [

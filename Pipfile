@@ -8,6 +8,7 @@ python-dotenv = "*"
 redis = {extras = ["hiredis"], version = "*"}
 fastapi = {extras = ["standard"], version = "*"}
 pytest = "*"
+httpx = "*"
 
 [dev-packages]
 
