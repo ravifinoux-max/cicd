@@ -24,7 +24,7 @@ jobs:
           export PIPENV_VENV_IN_PROJECT=1
           python -m pip install --upgrade pip
           pip install pipenv
-          mkdir .venv/
+          mkdir .venv
           pipenv install
 
       - name: List current directory
@@ -34,7 +34,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: py-venv
-          path: ./venv
+          path: .venv
           retention-days: 1
           if-no-files-found: warn
 
